@@ -22,5 +22,7 @@ jobs:
         java-version: '8'
         distribution: 'temurin'
         cache: maven
+    - name: switch working directory to project root
+      run: cd devops
     - name: Build with Maven
-      run: cd devops | mvn -B package --file pom.xml
+      run: mvn package
