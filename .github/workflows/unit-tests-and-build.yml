@@ -25,22 +25,22 @@ jobs:
     - name: Build and test with maven
       run: mvn clean package -f devops/
     - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
-          aws-region: "us-east-1"
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
+        aws-region: "us-east-1"
 
-      - name: Upload package to S3 bucket
-        run: aws s3 cp devops\target\devops-1.0-SNAPSHOT.jar s3://devops-example-bucket
+    - name: Upload package to S3 bucket
+      run: aws s3 cp devops\target\devops-1.0-SNAPSHOT.jar s3://devops-example-bucket
 
-      - name: Create new ElasticBeanstalk Application Version
-        run: |
-          aws elasticbeanstalk create-application-version \
-          --application-name GreeterApplication \
-          --source-bundle S3Bucket="devops-example-bucket",S3Key="devops-1.0-SNAPSHOT.jar" \
-          --version-label "ver-${{ github.sha }}" \
-          --description "commit-sha-${{ github.sha }}"
+    - name: Create new ElasticBeanstalk Application Version
+      run: |
+        aws elasticbeanstalk create-application-version \
+        --application-name GreeterApplication \
+        --source-bundle S3Bucket="devops-example-bucket",S3Key="devops-1.0-SNAPSHOT.jar" \
+        --version-label "ver-${{ github.sha }}" \
+        --description "commit-sha-${{ github.sha }}"
 
-      - name: Deploy new ElasticBeanstalk Application Version
-        run: aws elasticbeanstalk update-environment --environment-name Greeterapplication-env --version-label "ver-${{ github.sha }}"
+    - name: Deploy new ElasticBeanstalk Application Version
+      run: aws elasticbeanstalk update-environment --environment-name Greeterapplication-env --version-label "ver-${{ github.sha }}"
