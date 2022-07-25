@@ -23,4 +23,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build and test with maven
-      run: mvn package -f /devops
+      run: mvn package -f devops/
