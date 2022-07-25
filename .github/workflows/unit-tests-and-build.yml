@@ -32,7 +32,7 @@ jobs:
         aws-region: "us-east-1"
 
     - name: Upload package to S3 bucket
-      run: aws s3 cp devops\target\devops-1.0-SNAPSHOT.jar s3://devops-example-bucket
+      run: aws s3 cp devops/target/devops-1.0-SNAPSHOT.jar s3://devops-example-bucket
 
     - name: Create new ElasticBeanstalk Application Version
       run: |
