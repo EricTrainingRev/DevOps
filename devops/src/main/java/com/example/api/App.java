@@ -23,7 +23,7 @@ public class App {
             ctx.status(200);
         });
 
-        app.start(5000);
+        app.start(5000); // made this change to make AWS ElasticBeanstalk work correctly
     }
     
 }
