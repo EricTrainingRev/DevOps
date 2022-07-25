@@ -23,6 +23,14 @@ public class App {
             ctx.status(200);
         });
 
+        app.get("/{numOne}/{numTwo}", ctx -> {
+            int numOne = Integer.parseInt(ctx.pathParam("numOne"));
+            int numTwo = Integer.parseInt(ctx.pathParam("numTwo"));
+            String result = Integer.toString(numOne + numTwo);
+            ctx.result(result);
+            ctx.status(200);
+        });
+
         app.start(5000); // made this change to make AWS ElasticBeanstalk work correctly
     }
     
