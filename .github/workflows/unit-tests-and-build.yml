@@ -32,7 +32,7 @@ jobs:
         aws-region: "us-east-1"
 
     - name: Upload package to S3 bucket # updates jar file in S3 bucket with the most recent build. Notice syntax
-      run: aws s3 cp devops/target/devops-1.0-SNAPSHOT.jar s3:/example-hosting-static-website-bucket
+      run: aws s3 cp devops/target/devops-1.0-SNAPSHOT.jar s3://example-hosting-static-website-bucket
 
     - name: Create new ElasticBeanstalk Application Version # creates a new version of the application in Beanstalk
       run: |
