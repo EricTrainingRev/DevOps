@@ -31,14 +31,8 @@ public class App {
             ctx.status(200);
         });
 
-        app.get("/oops", ctx -> {
-            ctx.result("Uh oh! Something went wrong message");
-            ctx.status(200);
-        });
-
         app.start(5000); // made this change to make AWS ElasticBeanstalk work correctly
 
-        // adding comment for push
     }
     
 }

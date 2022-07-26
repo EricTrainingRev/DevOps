@@ -4,7 +4,7 @@ public class GreeterImp implements Greeter{
 
     @Override
     public String generalGreeting() {
-        return "Hello there!";
+        return "Hello there updated by github Actions!";
     }
 
     @Override

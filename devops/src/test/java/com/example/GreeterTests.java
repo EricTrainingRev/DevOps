@@ -19,7 +19,7 @@ public class GreeterTests {
     @Test
     public void getGenericGreetingPositiveTest(){
         String greeting = greeter.generalGreeting();
-        Assert.assertEquals("Hello there!", greeting);
+        Assert.assertEquals("Hello there updated by github Actions!", greeting);
     }
 
     @Test
